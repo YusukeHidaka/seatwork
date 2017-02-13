@@ -1,0 +1,119 @@
+.Carousel{
+position: relative;
+display: block;
+overflow: hidden;
+width: 1000px;
+height: 500px;
+margin: 0 auto;
+text-align: center;
+}
+.Carousel__main{
+position: relative;
+top: 0;
+left: 0;
+padding:0;
+margin:0;
+list-style: none;
+}.Carousel__item{
+position: relative;
+z-index: 1;
+float: left;
+width: 1000px;
+height: 500px;
+}
+.Carousel__link{
+display: block;
+width: 100%;
+height: 100;
+}
+.Carousel__image{
+width:1000px;
+margin:0;
+padding:0;
+}
+.Carousel__body{
+position: relative;
+display: block;
+width: 1000px;
+height: 500px;
+overflow: hidden;
+}
+.Carousel__arrow{
+position: absolute;
+z-index: 2;
+top: 50%;
+display: block;
+margin-top: -33px;
+}
+.Carousel__arrow--prev{
+left: 4%;
+}
+.Carousel__arrow--prev .Carousel__arrowButton{
+border-right:4px solid #33a65e;
+border-bottom:4px solid #33a65e;
+transform:rotate(90deg);
+-webkit-transform:rotate(135deg);
+-moz-transform:rotate(135deg);
+width:80px;
+height: 80px;
+}
+.Carousel__arrow--next{
+right: 4%;
+}
+.Carousel__arrow--next .Carousel__arrowButton{
+border-right:4px solid #33a65e;
+border-bottom:4px solid #33a65e;
+transform:rotate(90deg);
+-webkit-transform:rotate(-45deg);
+-moz-transform:rotate(-45deg);
+width:80px;
+height: 80px;
+}
+.Carousel__arrowButton{
+display: block;
+width: 47px;
+height: 66px;
+-webkit-transition: .3s;
+transition: .3s;
+text-indent: -9999px;
+background-size: 47px 66px;
+}
+.Carousel__navigation{
+position: absolute;
+z-index: 3;
+left: 10%;
+bottom: 20px;
+display: table;
+width: 260px;
+table-layout: fixed;
+}
+.Carousel__navigationItem{
+display: table-cell;
+}
+.Carousel__navigationDotto{
+display: block;
+width: 14px;
+height: 14px;
+margin: 0 auto;
+-webkit-transition: .3s;
+transition: .3s;
+text-indent: -9999px;
+border-radius: 50%;
+background: #fff;
+box-shadow: 0 0 5px rgba(0, 0, 0, .2);
+-ms-border-radius: 50%;
+-ms-box-shadow: 0 0 5px rgba(0, 0, 0, .2);
+}
+.Carousel__navigationDotto:hover{
+-webkit-transform: scale(1.2);
+transform: scale(1.2);
+}
+.Carousel__navigationDotto--active{
+background: #33a65e;
+box-shadow: none;
+-ms-box-shadow: none;
+}
+.Carousel__navigationDotto--active:hover{
+-webkit-transform: none;
+transform: none;
+}
