@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>My Vue.js Practice</title>
+</head>
+<body>
+  <div id="myapp">
+    <div v-text="msg | uppercase"></div>
+    <div v-text="msg | capitalize"></div>
+    <div v-text="price | currency ¥"></div>
+    <div>{{$data | json}}</div>
+    <input type="text" v-model="keyword">
+    <ul>
+      <!-- <li v-repeat="users | filterBy 't' in 'name'"> -->
+      <!-- <li v-repeat="users | filterBy keyword | orderBy 'name'"> -->
+      <!-- <li v-repeat="users | filterBy keyword | orderBy 'score' -1"> -->
+        <!-- orderByキーとか reverse するかどうかはオブジェクトのデータに持っておくことが多い -->
+      <li v-repeat="users | filterBy keyword | orderBy orderKey reverse">
+        {{name}} - {{score}}
+      </li>
+      <!-- <li v-for="user in users | filterBy 't' in 'name'">
+          {{user.name}} - {{user.score}}
+      </li> -->
+    </ul>
+
+    <!-- #13 -->
+    <input type="text" v-on="keyup:showLength | key enter" v-model="msg">
+
+    <!-- #14 -->
+    side: <input type="text" v-model="side">
+    <!-- area: {{area}} -->
+    area: <input type="text" v-model="area">
+  </div>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/0.11.4/vue.min.js"></script>
+  <script>
+    //filter
+    //filterBy
+    //orderBy
+    //key / v-on キーコードも使えるよ
+    //computed property 他の data の状態に応じて、自動的に計算してもらいたい場合
+    var vm = new Vue({
+      el: '#myapp',
+      data: {
+        msg: 'hello',
+        price: 34235,
+        orderKey: 'score',
+        reverse: false, //1.0以降では　order: -1　という感じで
+        users:[
+          {name: 'yusuke', score: 81},
+          {name: 'takana', score: 91},
+          {name: 'kazuki', score: 41}
+        ],
+        side: 20
+      },
+      methods: {
+        showLength: function() {
+          console.log(this.msg.length);
+        }
+      },
+      computed: {
+        // area: function() {
+        //   return this.side * this.side;
+        // }
+        area: {
+          get: function() {
+            return this.side * this.side;
+          },
+          set: function(v) {
+            this.side = Math.sqrt(v);
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+<!-- バージョン 1.0 以降では orderBy の2番目のオプションに true/false を与えることはできません。
+「orderBy 'score' order」のように2番目のオプションをデータで管理し、降順にソートしたい場合は、データで管理しない場合と同様に -1 を指定します。 -->
