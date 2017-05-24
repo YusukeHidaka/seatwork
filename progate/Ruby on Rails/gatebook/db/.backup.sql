@@ -1,0 +1,10 @@
+PRAGMA foreign_keys=OFF;
+BEGIN TRANSACTION;
+CREATE TABLE "schema_migrations" ("version" varchar NOT NULL);
+INSERT INTO "schema_migrations" VALUES('20160728102708');
+CREATE TABLE "notes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "content" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
+INSERT INTO "notes" VALUES(1,'楽しい','くそ刺激的な毎日','2016-07-28 12:56:56.485266','2016-07-28 12:56:56.485266');
+DELETE FROM sqlite_sequence;
+INSERT INTO "sqlite_sequence" VALUES('notes',1);
+CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version");
+COMMIT;
